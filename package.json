@@ -1,0 +1,19 @@
+{
+  "name": "naturezas-planilha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Validador de planilhas XLSX com destaque visual para linhas inconsistentes.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^2.4.0",
+    "xlsx-js-style": "^1.2.0"
+  }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Valide planilhas com clareza e devolva um arquivo pronto para revisar.">
+  <title>Naturezas | Validador de planilhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Naturezas Planilha - início">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">NATUREZAS<span>PLANILHA</span></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre</a>
+      <a class="nav-cta" href="#validar">Começar <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="sobre">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Precisão para o seu trabalho</p>
+        <h1>Planilhas mais <em>claras.</em><br>Decisões mais seguras.</h1>
+        <p class="hero-text">Confira duas colunas, encontre divergências e receba seu arquivo pronto para revisar. Simples, direto e sem perder tempo.</p>
+        <a class="primary-button" href="#validar">Validar minha planilha <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-art reveal" aria-label="Ilustração de organização de dados" role="img">
+        <div class="art-sun"></div>
+        <div class="art-panel">
+          <div class="panel-top"><span></span><span></span><span></span><b>revisao_final.xlsx</b></div>
+          <div class="sheet-row sheet-head"><span>Natureza</span><span>Conferência</span><span>Status</span></div>
+          <div class="sheet-row"><span>Entrada 01</span><span>Entrada 01</span><strong class="ok">OK</strong></div>
+          <div class="sheet-row warning"><span>Entrada 02</span><span>Entrada 05</span><strong>REVISAR</strong></div>
+          <div class="sheet-row"><span>Entrada 03</span><span>Entrada 03</span><strong class="ok">OK</strong></div>
+          <div class="sheet-row"><span>Entrada 04</span><span>Entrada 04</span><strong class="ok">OK</strong></div>
+        </div>
+        <div class="art-note"><span>✓</span> pronto para conferir</div>
+      </div>
+    </section>
+
+    <section class="workflow" id="como-funciona">
+      <div class="section-heading reveal"><p class="eyebrow">Fluxo descomplicado</p><h2>Do arquivo ao resultado<br>em poucos passos.</h2></div>
+      <div class="steps">
+        <article class="step reveal"><span class="step-number">01</span><h3>Envie o arquivo</h3><p>Arraste sua planilha ou selecione um arquivo XLSX do seu computador.</p></article>
+        <article class="step reveal"><span class="step-number">02</span><h3>Escolha as colunas</h3><p>Defina quais duas colunas precisam ser conferidas na primeira linha.</p></article>
+        <article class="step reveal"><span class="step-number">03</span><h3>Baixe e revise</h3><p>As linhas divergentes voltam marcadas em amarelo para sua análise.</p></article>
+      </div>
+    </section>
+
+    <section class="validator-section" id="validar">
+      <div class="validator-intro reveal"><p class="eyebrow">Área de validação</p><h2>Vamos deixar<br>isso <em>em ordem.</em></h2><p>Comece com uma planilha de até 10 MB.</p></div>
+      <form class="validator-card reveal" id="validator-form">
+        <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Selecionar planilha">
+          <input id="file-input" name="spreadsheet" type="file" accept=".xlsx,.xls" hidden>
+          <div class="upload-icon" aria-hidden="true">↑</div><strong id="file-label">Arraste sua planilha aqui</strong><span>ou <u>selecione um arquivo</u> .xlsx ou .xls</span>
+        </div>
+        <div class="column-fields"><label>Primeira coluna<input name="columnA" placeholder="Ex.: Natureza" required></label><label>Segunda coluna<input name="columnB" placeholder="Ex.: Conferência" required></label></div>
+        <button class="submit-button" type="submit">Conferir planilha <span aria-hidden="true">↗</span></button>
+        <p class="form-message" id="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Naturezas Planilha</span></div><p>Feito para tornar seus dados mais confiáveis.</p><span class="footer-year">© 2026</span></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
