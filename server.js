@@ -121,5 +121,5 @@ function highlightRow(sheet, rowNumber, columnCount, fill) {
 }
 
 app.listen(port, () => {
-  console.log(`Naturezas Planilha running on port ${port}`);
+  console.log(`Validador running on port ${port}`);
 });

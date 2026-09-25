@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Valide planilhas com clareza e devolva um arquivo pronto para revisar.">
-  <title>Naturezas | Validador de planilhas</title>
+  <meta name="description" content="Valide arquivos com clareza e devolva um resultado pronto para revisar.">
+  <title>Validador</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -12,9 +12,8 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="Naturezas Planilha - início">
+    <a class="brand" href="/" aria-label="Início">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="brand-name">NATUREZAS<span>PLANILHA</span></span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
       <a href="#como-funciona">Como funciona</a>
@@ -36,7 +35,7 @@
         <div class="art-sun"></div>
         <div class="art-panel">
           <div class="panel-top"><span></span><span></span><span></span><b>revisao_final.xlsx</b></div>
-          <div class="sheet-row sheet-head"><span>Natureza</span><span>Conferência</span><span>Status</span></div>
+          <div class="sheet-row sheet-head"><span>Código</span><span>Conferência</span><span>Status</span></div>
           <div class="sheet-row"><span>Entrada 01</span><span>Entrada 01</span><strong class="ok">OK</strong></div>
           <div class="sheet-row warning"><span>Entrada 02</span><span>Entrada 05</span><strong>REVISAR</strong></div>
           <div class="sheet-row"><span>Entrada 03</span><span>Entrada 03</span><strong class="ok">OK</strong></div>
@@ -62,14 +61,14 @@
           <input id="file-input" name="spreadsheet" type="file" accept=".xlsx,.xls" hidden>
           <div class="upload-icon" aria-hidden="true">↑</div><strong id="file-label">Arraste sua planilha aqui</strong><span>ou <u>selecione um arquivo</u> .xlsx ou .xls</span>
         </div>
-        <p class="dictionary-note">A validação usa o dicionário de naturezas configurado no sistema.</p>
+        <p class="dictionary-note">A validação usa o dicionário configurado no sistema.</p>
         <button class="submit-button" type="submit">Conferir planilha <span aria-hidden="true">↗</span></button>
         <p class="form-message" id="form-message" role="status"></p>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Naturezas Planilha</span></div><p>Feito para tornar seus dados mais confiáveis.</p><span class="footer-year">© 2026</span></footer>
+  <footer class="site-footer"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span></div><p>Feito para tornar seus dados mais confiáveis.</p><span class="footer-year">© 2026</span></footer>
   <script src="/app.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
-  "name": "naturezas-planilha",
+  "name": "validador-arquivos",
   "version": "1.0.0",
   "private": true,
-  "description": "Validador de planilhas XLSX com destaque visual para linhas inconsistentes.",
+  "description": "Validador de arquivos XLSX com destaque visual para linhas inconsistentes.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

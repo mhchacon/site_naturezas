@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: naturezas-planilha
+    name: validador-arquivos
     runtime: node
     buildCommand: npm install
     startCommand: npm start
