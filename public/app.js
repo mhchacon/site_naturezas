@@ -70,7 +70,7 @@ form.addEventListener('submit', async (event) => {
 function updateFileLabel(file) {
   if (!file) return;
   fileLabel.textContent = file.name;
-  setMessage('Arquivo selecionado. Agora informe as duas colunas.');
+  setMessage('Arquivo selecionado. As colunas padronizadas serão conferidas automaticamente.');
 }
 function setMessage(text, isError = false) {
   message.textContent = text;

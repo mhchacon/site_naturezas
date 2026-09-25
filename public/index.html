@@ -50,19 +50,19 @@
       <div class="section-heading reveal"><p class="eyebrow">Fluxo descomplicado</p><h2>Do arquivo ao resultado<br>em poucos passos.</h2></div>
       <div class="steps">
         <article class="step reveal"><span class="step-number">01</span><h3>Envie o arquivo</h3><p>Arraste sua planilha ou selecione um arquivo XLSX do seu computador.</p></article>
-        <article class="step reveal"><span class="step-number">02</span><h3>Escolha as colunas</h3><p>Defina quais duas colunas precisam ser conferidas na primeira linha.</p></article>
+        <article class="step reveal"><span class="step-number">02</span><h3>Confira os códigos</h3><p>O dicionário confere automaticamente a combinação de natureza e centro de custo.</p></article>
         <article class="step reveal"><span class="step-number">03</span><h3>Baixe e revise</h3><p>As linhas divergentes voltam marcadas em amarelo para sua análise.</p></article>
       </div>
     </section>
 
     <section class="validator-section" id="validar">
-      <div class="validator-intro reveal"><p class="eyebrow">Área de validação</p><h2>Vamos deixar<br>isso <em>em ordem.</em></h2><p>Comece com uma planilha de até 10 MB.</p></div>
+      <div class="validator-intro reveal"><p class="eyebrow">Área de validação</p><h2>Vamos deixar<br>isso <em>em ordem.</em></h2><p>Use uma planilha de até 10 MB com as colunas COD_NATUREZA_TITULO_PAGAR e COD_CENTRO_CUSTO_TITULO_PAGAR.</p></div>
       <form class="validator-card reveal" id="validator-form">
         <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Selecionar planilha">
           <input id="file-input" name="spreadsheet" type="file" accept=".xlsx,.xls" hidden>
           <div class="upload-icon" aria-hidden="true">↑</div><strong id="file-label">Arraste sua planilha aqui</strong><span>ou <u>selecione um arquivo</u> .xlsx ou .xls</span>
         </div>
-        <div class="column-fields"><label>Primeira coluna<input name="columnA" placeholder="Ex.: Natureza" required></label><label>Segunda coluna<input name="columnB" placeholder="Ex.: Conferência" required></label></div>
+        <p class="dictionary-note">A validação usa o dicionário de naturezas configurado no sistema.</p>
         <button class="submit-button" type="submit">Conferir planilha <span aria-hidden="true">↗</span></button>
         <p class="form-message" id="form-message" role="status"></p>
       </form>

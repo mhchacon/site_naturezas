@@ -1,10 +1,14 @@
 const express = require('express');
 const multer = require('multer');
 const XLSX = require('xlsx-js-style');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 10000;
+const natureDictionary = loadNatureDictionary();
+const natureColumnName = 'COD_NATUREZA_TITULO_PAGAR';
+const costCenterColumnName = 'COD_CENTRO_CUSTO_TITULO_PAGAR';
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024 },
@@ -26,22 +30,17 @@ app.post('/api/validate', upload.single('spreadsheet'), (request, response) => {
       return response.status(400).json({ error: 'Selecione uma planilha para continuar.' });
     }
 
-    const { columnA, columnB } = request.body;
-    if (!columnA || !columnB) {
-      return response.status(400).json({ error: 'Informe as duas colunas que devem ser comparadas.' });
-    }
-
     const workbook = XLSX.read(request.file.buffer, { type: 'buffer', cellStyles: true });
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
     const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
     const headers = rows[0] || [];
-    const firstColumn = findColumnIndex(headers, columnA);
-    const secondColumn = findColumnIndex(headers, columnB);
+    const firstColumn = findColumnIndex(headers, natureColumnName);
+    const secondColumn = findColumnIndex(headers, costCenterColumnName);
 
     if (firstColumn < 0 || secondColumn < 0) {
       return response.status(422).json({
-        error: 'Não encontrei uma ou duas colunas na primeira linha da planilha.',
+        error: `A planilha precisa conter as colunas ${natureColumnName} e ${costCenterColumnName} na primeira linha.`,
         availableColumns: headers.filter(Boolean)
       });
     }
@@ -55,7 +54,10 @@ app.post('/api/validate', upload.single('spreadsheet'), (request, response) => {
       if (row.every((value) => String(value).trim() === '')) continue;
       checkedRows += 1;
 
-      const matches = normalize(row[firstColumn]) === normalize(row[secondColumn]);
+      const natureCode = normalizeCode(row[firstColumn]);
+      const costCenterCode = normalizeCode(row[secondColumn]);
+      const allowedCostCenters = natureDictionary.get(natureCode);
+      const matches = allowedCostCenters?.has(costCenterCode) || false;
       if (!matches) {
         invalidRows += 1;
         highlightRow(sheet, rowIndex + 1, headers.length, yellowFill);
@@ -88,6 +90,26 @@ function findColumnIndex(headers, requestedName) {
 
 function normalize(value) {
   return String(value ?? '').trim();
+}
+
+function normalizeCode(value) {
+  return normalize(value).replace(/^0+(?=\d)/, '');
+}
+
+function loadNatureDictionary() {
+  const dictionaryPath = path.join(__dirname, 'dicionario.csv');
+  const lines = fs.readFileSync(dictionaryPath, 'utf8').replace(/^\uFEFF/, '').split(/\r?\n/);
+  const dictionary = new Map();
+
+  for (const line of lines.slice(1)) {
+    if (!line.trim()) continue;
+    const columns = line.split(';');
+    const natureCode = normalizeCode(columns[0]);
+    const costCenters = columns.slice(1).map(normalizeCode).filter(Boolean);
+    if (natureCode) dictionary.set(natureCode, new Set(costCenters));
+  }
+
+  return dictionary;
 }
 
 function highlightRow(sheet, rowNumber, columnCount, fill) {
