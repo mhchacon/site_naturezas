@@ -7,8 +7,8 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 10000;
 const natureDictionary = loadNatureDictionary();
-const natureColumnName = 'COD_NATUREZA_MOV_BANCARIA';
-const costCenterColumnName = 'COD_CENTRO_CUSTO_MOV_BANCARIA';
+const natureColumnName = 'E2_NATUREZ';
+const costCenterColumnName = 'D1_CC';
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024 },
